@@ -1,0 +1,30 @@
+{
+  "name": "oriconCast",
+  "version": "1.0.0",
+  "description": "automatic podcast",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/54chi/oriconCast.git"
+  },
+  "keywords": [
+    "nodejs",
+    "x-ray",
+    "scrapping",
+    "podcast"
+  ],
+  "author": "54chi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/54chi/oriconCast/issues"
+  },
+  "homepage": "https://github.com/54chi/oriconCast",
+  "dependencies": {
+    "encoding-japanese": "^1.0.24",
+    "iconv-lite": "^0.4.13",
+    "x-ray": "git+https://git@github.com/cbou/x-ray.git"
+  }
+}
