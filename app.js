@@ -1,72 +1,100 @@
 /*
-x-ray version
-I had to replace the original x-ray with a fork that supports pre-formatting (from cbou)
+oriconCast
+==========
 
--- npm install -i --save git+https://git@github.com/cbou/x-ray.git
+A video builder out of kickstarter's most popular technology videos.
+
+Tools:
+- node
+- x-ray (variant from 54chi because the crawler doesn't work in the main x-ray branch yet)
+- [download](https://github.com/kevva/download) to get the video files
+- [ffmpeg](https://ffmpeg.org/download.html) to manipulate the videos (merging)
+- [fluent-ffmpeg](https://github.com/fluent-ffmpeg/node-fluent-ffmpeg) for node support. Read the project's readme for info on how to set it properly
 */
 
+function complete(err,files){
+	//merge videos
+//https://github.com/fluent-ffmpeg/node-fluent-ffmpeg
+/*
+	var fluent_ffmpeg = require("fluent-ffmpeg");
 
-//dependencies
-var xray= require ("x-ray"),
-		fs = require('fs'),
-		encoding = require('encoding-japanese');
-		//Download = require('download'),
+	var mergedVideo = fluent_ffmpeg();
+	var videoNames = ['./download/video/video-619755-h264_high.mp4', './download/video/video-637420-h264_high.mp4'];
 
-//source url
-var html='http://www.jpopasia.com/charts/'
+	videoNames.forEach(function(videoName){
+	    mergedVideo = mergedVideo.addInput(videoName);
+	});
 
-//function to convert a string to an array (required for the encoding function)
-var str2array = function(str) {
-    var array = [],i,il=str.length;
-    for(i=0;i<il;i++) array.push(str.charCodeAt(i));
-    return array;
-};
+	mergedVideo.mergeToFile('./download/video/mergedVideo.mp4', './tmp/')
+	.on('error', function(err) {
+	    console.log('Error ' + err.message);
+	})
+	.on('end', function() {
+	    console.log('Finished!');
+	});
+*/
 
-//pre-formatting functions
-var prepare = {
-  uppercase: function (str) {
-    return str.toUpperCase();
-  },
-	japanese: function(str) {
-		array = str2array(str),
-		sjis_array = encoding.convert(array, {
-		  to: 'SJIS',
-		  from: 'SJIS'
-		});
-		sjis= encoding.codeToString( sjis_array );
-		return sjis;
-	}
+	console.log("\n * OPERATION COMPLETE \n");
 }
 
-//screen-scrapping function
-xray(html)
-	.prepare(prepare)
-  .select([{
-    $root: '.wrapper ul.chart li',
-    title: '.chart-title|japanese',
-		details: 'a.openvideo[href]',
-		desc: 'img[alt]|japanese',
-    artist: '.chart-artist|japanese'
-  }])
-//.write('results.json');
-  .run(function(err, results) {
-		//alternative to the "write" method from xray, in case you need more control on the output file
-		fs.writeFile("results.json", JSON.stringify(results,null,'\t'));
+// Downloader function
+function downloadStuff(results){
+	//dependencies
+	var Download = require('download'),
+			maxDownload=2,
+			downloadVideos="download/videos",
+			download = new Download({mode:755});
+
+	download.dest(downloadVideos);
+	var contents = JSON.stringify(results,null,'\t');
+
+	// if you prefer to download from a file instead, you can use the following code:
+	// var contents = fs.readFileSync(downloadResults);
+
+	var jsonContent = JSON.parse(contents);
+	console.log("\n * DOWNLOADING FILES:");
+
+	for(var index in jsonContent){
+		if ((index)>maxDownload-1) break;
+		console.log("     "+index+": "+jsonContent[index].project+": "+jsonContent[index].video);
+		download.get(jsonContent[index].video);
+	}
+	download.run(complete);
+}
+
+//Screen-scrapping+crawling
+//KS doesn't have a straight way to get the video URL, so we'll screen scrape the following page and get the video link from there
+
+//dependencies
+var Xray= require ("x-ray"),
+		x = Xray(),
+		html='https://www.kickstarter.com/discover/categories/technology?ref=category_modal&sort=popularity',
+		fs = require('fs'),
+		downloadResults="download/results.json";
+
+console.log("\n * GETTING DATA ");
+
+//x-ray code
+
+x(html,'#projects_list .project-card', [{
+	project: '.project-title',
+	by: '.project-byline',
+	details: '.project-blurb',
+	img: '.project-thumbnail  img@src',
+	link: '.project-title a@href',
+	video: x('.project-title a@href', '#video_pitch@data-video-url')	//crawl for the video URL
+}])(function (err, results) {
+  if (err) {
+    console.log(err)
+    return
+  }
+	//write results file
+	fs.writeFile(downloadResults, JSON.stringify(results,null,'\t'));
+	console.log("     Data fetched! JSON FILE: '"+downloadResults+"' generated!");
+
+	//download files
+	downloadStuff(results);
+});
 
 
-
-	//Any function you may like to run after the scrapping is done
-	//e.g. downloading stuff
-	/*
-    var download = new Download();
-    results = results.filter(function(image) {
-        return image.width > 100;
-    }).forEach(function(image) {
-        download.get(image.src);
-    });
-    download.dest('./images');
-    download.run();
-	fs.writeFile("results.json", JSON.stringify(results,null,'\t'));
-	*/
-	console.log("Operation completed");
-	})
+//complete();
