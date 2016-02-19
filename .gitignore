@@ -27,4 +27,5 @@ build/Release
 node_modules
 
 # downloaded files
-download/videos
+asset/videos
+asset/videos - Copy

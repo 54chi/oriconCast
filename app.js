@@ -1,81 +1,189 @@
-/*
-oriconCast
-==========
+// oriconCast
+// by 54chi
+// TODO: better async/sync manipulation
+// there should be a btter way to do this in a synch way. pull requests welcomed :)
 
-A video builder out of kickstarter's most popular technology videos.
+// *** DEPENDENCIES AND SETTINGS ***
+// Alt. you could put these settings within the functions, whatever you fancy
+var Xray= require ('x-ray'),
+		fs = require('fs'),
+		Download = require('download'),
+		fluent_ffmpeg = require('fluent-ffmpeg'),
+		path=require('path'),
+		probe = require('node-ffprobe'),
+		// location settings
+		html='https://www.kickstarter.com/discover/categories/technology?ref=category_modal&sort=popularity',
+		downloadLog="asset/results.json",
+		downloadVideos="asset/videos",
+		downloadResult="./asset/merged.mp4",
+		coverVideo="./asset/cover640s.mp4",
+		coverFont="./asset/fonts/OpenSans-Regular.ttf",
+		// starting values
+		x = Xray(),
+		maxDownload=5, //number of videos to download
+		download = new Download({mode:755}),
+		mergedVideo = fluent_ffmpeg(),
+		resizedVideo= fluent_ffmpeg();
+		download.dest(downloadVideos);
 
-Tools:
-- node
-- x-ray (variant from 54chi because the crawler doesn't work in the main x-ray branch yet)
-- [download](https://github.com/kevva/download) to get the video files
-- [ffmpeg](https://ffmpeg.org/download.html) to manipulate the videos (merging)
-- [fluent-ffmpeg](https://github.com/fluent-ffmpeg/node-fluent-ffmpeg) for node support. Read the project's readme for info on how to set it properly
-*/
+// *** SUPPORTING FUNCTIONS ***
 
-function complete(err,files){
-	//merge videos
-//https://github.com/fluent-ffmpeg/node-fluent-ffmpeg
-/*
-	var fluent_ffmpeg = require("fluent-ffmpeg");
+String.prototype.replaceAll = function(search, replacement) {
+		//replace all occurences of a character in a particular string
+		//http://stackoverflow.com/questions/1144783/replacing-all-occurrences-of-a-string-in-javascript
+    var target = this;
+    return target.replace(new RegExp(search, 'g'), replacement);
+};
 
-	var mergedVideo = fluent_ffmpeg();
-	var videoNames = ['./download/video/video-619755-h264_high.mp4', './download/video/video-637420-h264_high.mp4'];
+var done = false;
+var clips=[],
+		clips2scale=[],
+		filePath="",
+		completionCheck=0,
+		videoWidth=640,
+		videoHeight=360;
 
-	videoNames.forEach(function(videoName){
-	    mergedVideo = mergedVideo.addInput(videoName);
-	});
+var uploadToYouTube = function(){
+	// upload video to your youtube channel
+	console.log("TBD");
+};
 
-	mergedVideo.mergeToFile('./download/video/mergedVideo.mp4', './tmp/')
-	.on('error', function(err) {
-	    console.log('Error ' + err.message);
-	})
-	.on('end', function() {
-	    console.log('Finished!');
-	});
-*/
-
-	console.log("\n * OPERATION COMPLETE \n");
+var mergeVideo = function(){
+	console.log("\n * MERGE VIDEO FILES:");
+	mergedVideo.mergeToFile(downloadResult,'./tmp/')
+		.on('error', function(err) {
+			console.log('     Error ' + err.message);
+		}).on('end', function() {
+			// uploadToYouTube()
+			console.log("\n *** OPERATION COMPLETE ***\n");
+		});
 }
 
-// Downloader function
-function downloadStuff(results){
-	//dependencies
-	var Download = require('download'),
-			maxDownload=2,
-			downloadVideos="download/videos",
-			download = new Download({mode:755});
+var resizeVideo = function(){
+	console.log("\n * RESIZE VIDEO FILES:" + clips2scale);
+	completionCheck=0;
 
-	download.dest(downloadVideos);
-	var contents = JSON.stringify(results,null,'\t');
+	clips2scale.forEach(function(videoName){
+		//rescale the video if size is not correct
+		fluent_ffmpeg(downloadVideos+'/'+videoName).size(videoWidth+'x'+videoHeight).autopad().save(downloadVideos+'/'+path.basename(videoName,'.mp4')+'-0.mp4')
+		.on('error', function(err) {
+			console.log('     Error ' + err.message);
+		}).on('end', function() {
+			completionCheck++;
+			console.log('     Resizing file:'+ videoName);
+			if (completionCheck>clips2scale.length-1){
+				mergeVideo(); //merge the videos
+			}
+		});
+	});
+}
 
-	// if you prefer to download from a file instead, you can use the following code:
-	// var contents = fs.readFileSync(downloadResults);
+var addAndProbeVideo = function(filePath,videoName){
+	// checks for the video size and mark them for resize as needed. Populates the final merge list
+	probe(filePath, function(err, probeData) {
+		if (probeData.streams[0].width!=videoWidth||probeData.streams[0].height!=videoHeight){
+			console.log("     Probing video: "+filePath);
+			// add video to resizing list
+			clips2scale.push(videoName);
+			// rename with future video name
+			videoName=path.basename(videoName,'.mp4')+'-0.mp4';
+		}else{
+			console.log("     Merging file: "+downloadVideos+"/"+videoName);
+		};
+		// add video (and some future name) to merge list
+		mergedVideo = mergedVideo.addInput(downloadVideos+"/"+videoName);
+		completionCheck++;
+		if (completionCheck>clips.length-1) {
+			//exit and call the next function
+			clips2scale.length>0?resizeVideo():mergeVideo();
+		}
+	});
+};
 
-	var jsonContent = JSON.parse(contents);
-	console.log("\n * DOWNLOADING FILES:");
+var createBigVideo = function(){
+	// merge everything in one big video
+	console.log("\n * MERGING VIDEO FILES:");
+	clips = fs.readdirSync(downloadVideos);
+	completionCheck=0;
+	// sort names descending
+	clips.sort(function (a, b) {
+	    return b-a;
+	});
+	// add videos to download to the mergedVideo object
+	clips.forEach(function(videoName){
+		//rescale the video if size is not correct
+		filePath=downloadVideos+"/"+videoName;
+		addAndProbeVideo(filePath,videoName);
+	});
+}
 
+var createCoverVideos = function(){
+	// create cover videos
+	console.log("\n * CREATING COVER VIDEOS:");
+	var contents = fs.readFileSync(downloadLog),
+			jsonContent = JSON.parse(contents);
+	completionCheck=0;
+	// read the json file contents
 	for(var index in jsonContent){
 		if ((index)>maxDownload-1) break;
+		// create the cover page on top of generic cover video
+		fluent_ffmpeg(coverVideo).videoFilters({
+				filter: 'drawbox',
+				options: {
+					y:'ih/PHI',
+					color:'black@0.4',
+					width:'iw',
+					height:48,
+					t:'max'
+				}
+			},{
+				filter: 'drawtext',
+			  options: {
+			    fontfile:coverFont,
+			    text: (jsonContent[index].project).replaceAll(":", "-").replaceAll("\'", "\\\\\\\\\\\\'"),
+			    fontsize: 18,
+			    fontcolor: 'white',
+			    x: '(main_w/2-text_w/2)',
+			    y: '(h/PHI)+th'
+				}
+		}).on('end', function() {
+				console.log("     Cover for "+jsonContent[completionCheck].project+" : "+path.basename(jsonContent[completionCheck].video,'.mp4')+"-cover.mp4");
+				completionCheck++;
+				// when completing all covers, continue to create the big video
+				if (completionCheck>maxDownload-1) createBigVideo();
+	  })
+		.on('error', function(err, stdout, stderr) {
+				console.log('error: ' + err.message);
+				console.log('stdout: ' + stdout);
+				console.log('stderr: ' + stderr);
+		})
+	  // save the cover videos to file
+	  .save(downloadVideos+"/"+path.basename(jsonContent[index].video, '.mp4')+'-cover.mp4');
+	};
+}
+
+var downloadStuff = function(results){
+	// Downloader function
+	console.log("\n * DOWNLOADING FILES:");
+	// if you prefer to download from a file instead, you can use the following code:
+	// var contents = fs.readFileSync(downloadLog);
+	var contents = JSON.stringify(results,null,'\t'),
+			jsonContent = JSON.parse(contents);
+	// add files to get to the download object
+	for(var index in jsonContent){
+		if ((index)>maxDownload-1) break;
+		videoIndex=index;
 		console.log("     "+index+": "+jsonContent[index].project+": "+jsonContent[index].video);
 		download.get(jsonContent[index].video);
 	}
-	download.run(complete);
+	// download files and upon completion, call the video merger function
+	download.run(createCoverVideos);
 }
 
-//Screen-scrapping+crawling
-//KS doesn't have a straight way to get the video URL, so we'll screen scrape the following page and get the video link from there
-
-//dependencies
-var Xray= require ("x-ray"),
-		x = Xray(),
-		html='https://www.kickstarter.com/discover/categories/technology?ref=category_modal&sort=popularity',
-		fs = require('fs'),
-		downloadResults="download/results.json";
-
-console.log("\n * GETTING DATA ");
+//*** MAIN CALL ***//
+console.log("\n *** GETTING DATA ***");
 
 //x-ray code
-
 x(html,'#projects_list .project-card', [{
 	project: '.project-title',
 	by: '.project-byline',
@@ -89,12 +197,8 @@ x(html,'#projects_list .project-card', [{
     return
   }
 	//write results file
-	fs.writeFile(downloadResults, JSON.stringify(results,null,'\t'));
-	console.log("     Data fetched! JSON FILE: '"+downloadResults+"' generated!");
-
-	//download files
+	fs.writeFile(downloadLog, JSON.stringify(results,null,'\t'));
+	console.log("     Data fetched! JSON FILE: '"+downloadLog+"' generated!");
+	//continue with downloading files
 	downloadStuff(results);
 });
-
-
-//complete();
