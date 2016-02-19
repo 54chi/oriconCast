@@ -91,7 +91,7 @@ var addAndProbeVideo = function(videoName){
 			// add video to resizing list
 			clips2scale.push(videoName);
 			// rename with future video name
-			videoName=path.basename(videoName,'.mp4')+'-0.mp4';
+			videoName=path.basename(videoName,'.mp4')+'-zz.mp4';
 		}else{
 			console.log('     Merging file: '+downloadVideos+'/'+videoName);
 		};
