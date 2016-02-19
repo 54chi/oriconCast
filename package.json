@@ -23,14 +23,10 @@
   },
   "homepage": "https://github.com/54chi/oriconCast",
   "dependencies": {
-    "deasync": "^0.1.4",
     "download": "^4.4.3",
     "fluent-ffmpeg": "^2.0.1",
-    "gulp-rename": "^1.2.2",
     "node-ffprobe": "^1.2.2",
     "request": "^2.67.0",
-    "sync": "^0.2.5",
-    "x-ray": "git+ssh://git@github.com/54chi/x-ray.git#bugfix/nested-crawling",
-    "youtube-api": "^1.4.0"
+    "x-ray": "git+ssh://git@github.com/54chi/x-ray.git#bugfix/nested-crawling"
   }
 }

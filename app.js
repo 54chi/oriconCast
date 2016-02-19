@@ -70,7 +70,7 @@ var resizeVideo = function(){
 	completionCheck=0;
 	clips2scale.forEach(function(videoName){
 		//rescale the video if size is not correct
-		fluent_ffmpeg(downloadVideos+'/'+videoName).size(videoWidth+'x'+videoHeight).autopad().save(downloadVideos+'/'+path.basename(videoName,'.mp4')+'-0.mp4')
+		fluent_ffmpeg(downloadVideos+'/'+videoName).size(videoWidth+'x'+videoHeight).autopad().save(downloadVideos+'/'+path.basename(videoName,'.mp4')+'-zz.mp4')
 		.on('error', function(err) {
 			console.log('     Error ' + err.message);
 		}).on('end', function() {
@@ -207,3 +207,6 @@ x(html,'#projects_list .project-card', [{
 	//continue with downloading files
 	downloadStuff(results);
 });
+
+//test
+//createBigVideo();;

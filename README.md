@@ -30,4 +30,4 @@ This is a research project for future applications. If you plan to use this for 
 1. For scrapping, let's use the "upgraded" version of cheerio (x-ray), by the same author: https://github.com/lapwinglabs/x-ray . I'm actually using a variant from 54chi because the crawler doesn't work in the main x-ray branch yet (git+ssh://git@github.com/54chi/x-ray.git#bugfix/nested-crawling)
 2. Downloading files using the [download plugin](https://github.com/kevva/download)
 3. [ffmpeg](https://ffmpeg.org/download.html) to manipulate the videos (merging, cover titles) as well as  [fluent-ffmpeg](https://github.com/fluent-ffmpeg/node-fluent-ffmpeg) for node support. Read the project's readme for info on how to set it properly
-4. Uploading to youtube
+4. Uploading to youtube (TBD)
