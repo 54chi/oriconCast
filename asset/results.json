@@ -27,17 +27,9 @@
 		"project": "The world's smartest photo storage and management device.",
 		"by": "Monument Labs, Inc.",
 		"details": "\nMonument stores and automatically organizes your photos by time, location, faces and what's in them. End your photo mess!\n",
-		"img": "https://ksr-ugc.imgix.net/projects/2244298/photo-original.jpg?v=1455645570&w=218&h=162&fit=crop&auto=format&q=92&s=53d71a02d290345ff3eb566791a1e6bd",
+		"img": "https://ksr-ugc.imgix.net/projects/2244298/photo-original.png?v=1455824070&w=218&h=162&fit=crop&auto=format&q=92&s=b4a525ec925be184a992ede7d633638b",
 		"link": "https://www.kickstarter.com/projects/monument/the-worlds-smartest-photo-storage-and-management-d?ref=category_popular",
 		"video": "https://ksr-video.imgix.net/projects/2244298/video-637729-h264_high.mp4"
-	},
-	{
-		"project": "Sense: Personalized Intelligence for your Connected Home",
-		"by": "Silk Labs",
-		"details": "\nA beautifully designed, responsive, intelligent, and secure assistant. The eyes, ears, and brain of your modern household.\n",
-		"img": "https://ksr-ugc.imgix.net/projects/2302356/photo-original.jpg?v=1455492194&w=218&h=162&fit=crop&auto=format&q=92&s=778cb389ad6768e4f076fdc867504285",
-		"link": "https://www.kickstarter.com/projects/gal/sense-personalized-intelligence-for-your-connected?ref=category_popular",
-		"video": "https://ksr-video.imgix.net/projects/2302356/video-638203-h264_high.mp4"
 	},
 	{
 		"project": "Rocketbook Wave: Cloud Connected Microwavable Notebook",
@@ -46,6 +38,14 @@
 		"img": "https://ksr-ugc.imgix.net/projects/2290132/photo-original.jpg?v=1455223796&w=218&h=162&fit=crop&auto=format&q=92&s=b9fe3c01339c89f77dd3e9d40d261b41",
 		"link": "https://www.kickstarter.com/projects/642311833/rocketbook-wave-cloud-connected-microwavable-noteb?ref=category_popular",
 		"video": "https://ksr-video.imgix.net/projects/2290132/video-632370-h264_high.mp4"
+	},
+	{
+		"project": "Sense: Personalized Intelligence for your Connected Home",
+		"by": "Silk Labs",
+		"details": "\nA beautifully designed, responsive, intelligent, and secure assistant. The eyes, ears, and brain of your modern household.\n",
+		"img": "https://ksr-ugc.imgix.net/projects/2302356/photo-original.jpg?v=1455492194&w=218&h=162&fit=crop&auto=format&q=92&s=778cb389ad6768e4f076fdc867504285",
+		"link": "https://www.kickstarter.com/projects/gal/sense-personalized-intelligence-for-your-connected?ref=category_popular",
+		"video": "https://ksr-video.imgix.net/projects/2302356/video-638203-h264_high.mp4"
 	},
 	{
 		"project": "Nurugo Micro : The Smallest 400x Microscope for Smartphone",
@@ -72,6 +72,38 @@
 		"video": "https://ksr-video.imgix.net/projects/1798800/video-624784-h264_high.mp4"
 	},
 	{
+		"project": "LUX CABLES | The Premium Charging Cable",
+		"by": "Lux Cables",
+		"details": "\n2 meters long, thicker wire gauge (20 AWG), metal encased tips and braided with nylon. MFI certified and Quick Charge compatible.\n",
+		"img": "https://ksr-ugc.imgix.net/projects/2284273/photo-original.png?v=1454008521&w=218&h=162&fit=crop&auto=format&q=92&s=0fd10ec6946e55494b5adc541de5bab7",
+		"link": "https://www.kickstarter.com/projects/luxcables/lux-cables-the-premium-charging-cable?ref=category_popular",
+		"video": "https://ksr-video.imgix.net/projects/2284273/video-626958-h264_high.mp4"
+	},
+	{
+		"project": "Stikk- The Gel Pad That Will Stick Anything to Everything!",
+		"by": "Plus 8",
+		"details": "\nStikk is a Unique Re-Usable Double Sided Gel Pad That Will Stick Anything to Everything!\n",
+		"img": "https://ksr-ugc.imgix.net/projects/2337779/photo-original.jpg?v=1455635200&w=218&h=162&fit=crop&auto=format&q=92&s=b037d48f5ddaa78d18df38fce88fde0f",
+		"link": "https://www.kickstarter.com/projects/plus8/stikk-the-gel-pad-that-will-stick-anything-to-ever?ref=category_popular",
+		"video": "https://ksr-video.imgix.net/projects/2337779/video-637416-h264_high.mp4"
+	},
+	{
+		"project": "CableKnife - The World's best cable insulation stripper",
+		"by": "Sheridan Repton",
+		"details": "\nCableKnife is the best solution for removing insulation from cables for the purpose of maximising the scrap metal value by up to 350%\n",
+		"img": "https://ksr-ugc.imgix.net/projects/2271745/photo-original.jpg?v=1453841514&w=218&h=162&fit=crop&auto=format&q=92&s=82ce3ed84ef56845bf534b3f4d777bb1",
+		"link": "https://www.kickstarter.com/projects/cableknife/cableknife-the-worlds-best-cable-insulation-stripp?ref=category_popular",
+		"video": "https://ksr-video.imgix.net/projects/2271745/video-624833-h264_high.mp4"
+	},
+	{
+		"project": "PenSe. A Pencil case.",
+		"by": "Appostasy Inc.",
+		"details": "\nPenSe: The simple and effective case for your Apple Pencil.\n",
+		"img": "https://ksr-ugc.imgix.net/projects/2205798/photo-original.JPG?v=1455586649&w=218&h=162&fit=crop&auto=format&q=92&s=eba5c8d7cc61f7b856f5092a5aaa2e22",
+		"link": "https://www.kickstarter.com/projects/1255482952/pense-the-1st-multi-functional-apple-pencil-case-p?ref=category_popular",
+		"video": "https://ksr-video.imgix.net/projects/2205798/video-636861-h264_high.mp4"
+	},
+	{
 		"project": "LoPy – the LoRa, WiFi and Bluetooth IoT development platform",
 		"by": "Pycom",
 		"details": "\nLoPy is a MicroPython triple-network dev platform which doubles up as a LoRa Nano gateway. Arduino IDE compatible as stretch goal.\n",
@@ -88,36 +120,12 @@
 		"video": "https://ksr-video.imgix.net/projects/2259114/video-632909-h264_high.mp4"
 	},
 	{
-		"project": "CableKnife - The World's best cable insulation stripper",
-		"by": "Sheridan Repton",
-		"details": "\nCableKnife is the best solution for removing insulation from cables for the purpose of maximising the scrap metal value by up to 350%\n",
-		"img": "https://ksr-ugc.imgix.net/projects/2271745/photo-original.jpg?v=1453841514&w=218&h=162&fit=crop&auto=format&q=92&s=82ce3ed84ef56845bf534b3f4d777bb1",
-		"link": "https://www.kickstarter.com/projects/cableknife/cableknife-the-worlds-best-cable-insulation-stripp?ref=category_popular",
-		"video": "https://ksr-video.imgix.net/projects/2271745/video-624833-h264_high.mp4"
-	},
-	{
-		"project": "Complete course: Build Kickstarter with Python and Bootstrap",
-		"by": "CodeUpStart",
-		"details": "\nComplete projects to learn how to code by building Kickstarter, Instagram & more from zero to launch\n",
-		"img": "https://ksr-ugc.imgix.net/projects/2293996/photo-original.png?v=1454095903&w=218&h=162&fit=crop&auto=format&q=92&s=8e710ccb9298ad1ba8df001ab8527259",
-		"link": "https://www.kickstarter.com/projects/1194260866/complete-course-build-kickstarter-with-python-and?ref=category_popular",
-		"video": "https://ksr-video.imgix.net/projects/2293996/video-632043-h264_high.mp4"
-	},
-	{
-		"project": "PenSe. A Pencil case.",
-		"by": "Appostasy Inc.",
-		"details": "\nPenSe: The simple and effective case for your Apple Pencil.\n",
-		"img": "https://ksr-ugc.imgix.net/projects/2205798/photo-original.JPG?v=1455586649&w=218&h=162&fit=crop&auto=format&q=92&s=eba5c8d7cc61f7b856f5092a5aaa2e22",
-		"link": "https://www.kickstarter.com/projects/1255482952/pense-the-1st-multi-functional-apple-pencil-case-p?ref=category_popular",
-		"video": "https://ksr-video.imgix.net/projects/2205798/video-636861-h264_high.mp4"
-	},
-	{
-		"project": "Stikk- The Gel Pad That Will Stick Anything to Everything!",
-		"by": "Plus 8",
-		"details": "\nStikk is a Unique Re-Usable Double Sided Gel Pad That Will Stick Anything to Everything!\n",
-		"img": "https://ksr-ugc.imgix.net/projects/2337779/photo-original.jpg?v=1455635200&w=218&h=162&fit=crop&auto=format&q=92&s=b037d48f5ddaa78d18df38fce88fde0f",
-		"link": "https://www.kickstarter.com/projects/plus8/stikk-the-gel-pad-that-will-stick-anything-to-ever?ref=category_popular",
-		"video": "https://ksr-video.imgix.net/projects/2337779/video-637416-h264_high.mp4"
+		"project": "HOT Band: The Smart Watch Band for Any Watch",
+		"by": "HOT Smart Watch from PHTL",
+		"details": "\nNow, you can make phone calls with Pebble watch, experience private calls with Apple watch, or make ANY fashion watch a smartwatch.\n",
+		"img": "https://ksr-ugc.imgix.net/projects/2272560/photo-original.jpg?v=1454096432&w=218&h=162&fit=crop&auto=format&q=92&s=43af0de91f654700b8d13e4e68a3cac0",
+		"link": "https://www.kickstarter.com/projects/hotsmartwatch/hot-band-the-smart-watch-band-for-any-watch?ref=category_popular",
+		"video": "https://ksr-video.imgix.net/projects/2272560/video-635357-h264_high.mp4"
 	},
 	{
 		"project": "SENTIO - World’s first open & closed headphone",
@@ -128,20 +136,20 @@
 		"video": "https://ksr-video.imgix.net/projects/2134616/video-624589-h264_high.mp4"
 	},
 	{
-		"project": "HOT Band: The Smart Watch Band for Any Watch",
-		"by": "HOT Smart Watch from PHTL",
-		"details": "\nNow, you can make phone calls with Pebble watch, experience private calls with Apple watch, or make ANY fashion watch a smartwatch.\n",
-		"img": "https://ksr-ugc.imgix.net/projects/2272560/photo-original.jpg?v=1454096432&w=218&h=162&fit=crop&auto=format&q=92&s=43af0de91f654700b8d13e4e68a3cac0",
-		"link": "https://www.kickstarter.com/projects/hotsmartwatch/hot-band-the-smart-watch-band-for-any-watch?ref=category_popular",
-		"video": "https://ksr-video.imgix.net/projects/2272560/video-635357-h264_high.mp4"
+		"project": "Complete course: Build Kickstarter with Python and Bootstrap",
+		"by": "CodeUpStart",
+		"details": "\nComplete projects to learn how to code by building Kickstarter, Instagram & more from zero to launch\n",
+		"img": "https://ksr-ugc.imgix.net/projects/2293996/photo-original.png?v=1454095903&w=218&h=162&fit=crop&auto=format&q=92&s=8e710ccb9298ad1ba8df001ab8527259",
+		"link": "https://www.kickstarter.com/projects/1194260866/complete-course-build-kickstarter-with-python-and?ref=category_popular",
+		"video": "https://ksr-video.imgix.net/projects/2293996/video-632043-h264_high.mp4"
 	},
 	{
-		"project": "LUX CABLES | The Premium Charging Cable",
-		"by": "Lux Cables",
-		"details": "\n2 meters long, thicker wire gauge (20 AWG), metal encased tips and braided with nylon. MFI certified and Quick Charge compatible.\n",
-		"img": "https://ksr-ugc.imgix.net/projects/2284273/photo-original.png?v=1454008521&w=218&h=162&fit=crop&auto=format&q=92&s=0fd10ec6946e55494b5adc541de5bab7",
-		"link": "https://www.kickstarter.com/projects/luxcables/lux-cables-the-premium-charging-cable?ref=category_popular",
-		"video": "https://ksr-video.imgix.net/projects/2284273/video-626958-h264_high.mp4"
+		"project": "PulseBand A6 - Healthy Living: One pulse at a time",
+		"by": "Vidonn Smartband",
+		"details": "\nPulseBand A6, the ultimate smart band for an affordable price. Healthy Living Now, One Pulse At A Time.\n",
+		"img": "https://ksr-ugc.imgix.net/projects/2297891/photo-original.jpg?v=1455772173&w=218&h=162&fit=crop&auto=format&q=92&s=3d9ef46e7b9733f21925e262d4b89c74",
+		"link": "https://www.kickstarter.com/projects/1503513555/pulseband-a6-healthy-living-one-pulse-at-a-time?ref=category_popular",
+		"video": "https://ksr-video.imgix.net/projects/2297891/video-630776-h264_high.mp4"
 	},
 	{
 		"project": "PACE - Mach dein Auto zum Smartcar!",
@@ -150,13 +158,5 @@
 		"img": "https://ksr-ugc.imgix.net/projects/2289665/photo-original.jpg?v=1455798270&w=218&h=162&fit=crop&auto=format&q=92&s=35fef0ed4a12925317847cddf6e6d850",
 		"link": "https://www.kickstarter.com/projects/pacetelematics/pace-mach-dein-auto-zum-smartcar?ref=category_popular",
 		"video": "https://ksr-video.imgix.net/projects/2289665/video-632868-h264_high.mp4"
-	},
-	{
-		"project": "OpenKey - The Two-factor Authentication & Password Solution",
-		"by": "Tim Steiner",
-		"details": "\nFinally, a simple solution to the password and two-factor authentication problem.\n",
-		"img": "https://ksr-ugc.imgix.net/projects/2312412/photo-original.JPG?v=1454621885&w=218&h=162&fit=crop&auto=format&q=92&s=3b32bf624604404991cf2c09126b1c94",
-		"link": "https://www.kickstarter.com/projects/1048259057/openkey-the-two-factor-authentication-and-password?ref=category_popular",
-		"video": "https://ksr-video.imgix.net/projects/2312412/video-637238-h264_high.mp4"
 	}
 ]
